@@ -10,6 +10,7 @@ import { AppRoutingModule } from '../app/app-routing-module';
 import { DatosAlumnosComponent } from './datos-alumnos/datos-alumnos.component';
 import { NuevoAlumnoComponent } from './nuevo-alumno/nuevo-alumno.component';
 import { ReporteCursoComponent } from './reporte-curso/reporte-curso.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ReporteCursoComponent } from './reporte-curso/reporte-curso.component';
     ListaDeAlumnosComponent,
     DatosAlumnosComponent,
     NuevoAlumnoComponent,
-    ReporteCursoComponent
+    ReporteCursoComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

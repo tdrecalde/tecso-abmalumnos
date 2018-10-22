@@ -1,10 +1,7 @@
+<mat-toolbar color="warn">{{titulo}}</mat-toolbar>
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer opened class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav Auto-resizing sidenav Auto-resizing sidenav</p>
-    <!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button> -->
+    <app-sidebar></app-sidebar>
   </mat-drawer>
 
   <div class="example-sidenav-content">

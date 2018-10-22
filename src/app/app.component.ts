@@ -7,5 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'alumnosABM';
+  titulo = 'ABM de alumnos';
+
+
+  
 }
