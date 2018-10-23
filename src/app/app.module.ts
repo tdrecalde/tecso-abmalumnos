@@ -11,6 +11,9 @@ import { DatosAlumnosComponent } from './datos-alumnos/datos-alumnos.component';
 import { NuevoAlumnoComponent } from './nuevo-alumno/nuevo-alumno.component';
 import { ReporteCursoComponent } from './reporte-curso/reporte-curso.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import {FormsModule, ReactiveFormsModule, FormControl, Validators} from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material';
+
 
 
 @NgModule({
@@ -20,7 +23,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     DatosAlumnosComponent,
     NuevoAlumnoComponent,
     ReporteCursoComponent,
-    SidebarComponent
+    SidebarComponent, 
   ],
   imports: [
     BrowserModule,
@@ -28,8 +31,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     MaterialModule,
     RouterModule, 
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [MatNativeDateModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
