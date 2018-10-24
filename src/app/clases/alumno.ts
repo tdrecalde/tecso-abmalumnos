@@ -5,5 +5,6 @@ export class Alumno {
     documento: string;
     nombre: string;
     apellido: string;
+    direccion: string;
     fechanac: Date;
 }

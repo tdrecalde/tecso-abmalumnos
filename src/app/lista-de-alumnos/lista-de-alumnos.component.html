@@ -1,9 +1,12 @@
 
+<mat-toolbar>Listado de alumnos </mat-toolbar>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <ng-container matColumnDef="legajo">
     <th mat-header-cell *matHeaderCellDef> Legajo </th>
-    <td mat-cell *matCellDef="let element"> {{element.legajo}} </td>
+    <td mat-cell *matCellDef="let element"> 
+      <button [routerLink]="['/datosAlumno/' + element.legajo]" mat-raised-button color="primary">{{element.legajo}} </button>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="documento">
@@ -29,7 +32,7 @@
   <ng-container matColumnDef="acciones">
     <th mat-header-cell *matHeaderCellDef> Acciones </th>
     <td mat-cell *matCellDef="let element"> 
-      <button [routerLink]="['/datosAlumno/' + element.legajo]" mat-raised-button color="primary">Editar</button>
+      <button [routerLink]="['/editarAlumno/' + element.legajo]" mat-raised-button color="primary">Editar</button>
       <button [routerLink]="['/datosAlumno/' + element.legajo]" mat-raised-button color="warn">Borrar</button>
     </td>
   </ng-container>

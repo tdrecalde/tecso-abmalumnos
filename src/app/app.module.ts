@@ -13,6 +13,7 @@ import { ReporteCursoComponent } from './reporte-curso/reporte-curso.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {FormsModule, ReactiveFormsModule, FormControl, Validators} from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material';
+import { EditarAlumnoComponent } from './editar-alumno/editar-alumno.component';
 
 
 
@@ -21,6 +22,7 @@ import { MatNativeDateModule } from '@angular/material';
     AppComponent,
     ListaDeAlumnosComponent,
     DatosAlumnosComponent,
+    EditarAlumnoComponent,
     NuevoAlumnoComponent,
     ReporteCursoComponent,
     SidebarComponent, 

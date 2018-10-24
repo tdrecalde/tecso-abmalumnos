@@ -5,12 +5,14 @@ import { ListaDeAlumnosComponent } from './lista-de-alumnos/lista-de-alumnos.com
 import { ReporteCursoComponent } from './reporte-curso/reporte-curso.component';
 import { DatosAlumnosComponent } from './datos-alumnos/datos-alumnos.component';
 import { NuevoAlumnoComponent } from './nuevo-alumno/nuevo-alumno.component';
+import { EditarAlumnoComponent } from './editar-alumno/editar-alumno.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/listadoAlumnos', pathMatch: 'full' },
   { path: 'listadoAlumnos',  component: ListaDeAlumnosComponent},
-  { path: 'reporteCurso/:identificador',  component: ReporteCursoComponent},
+  { path: 'reporteCursos',  component: ReporteCursoComponent},
   { path: 'datosAlumno/:legajo',  component: DatosAlumnosComponent},
+  { path: 'editarAlumno/:legajo',  component: EditarAlumnoComponent},
   { path: 'nuevoAlumno',  component: NuevoAlumnoComponent},
   { path: '**', redirectTo: '/listadoAlumnos', pathMatch: 'full' }
 ];

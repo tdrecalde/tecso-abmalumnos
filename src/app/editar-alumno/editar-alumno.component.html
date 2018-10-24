@@ -1,10 +1,15 @@
 
 <div class="container-fluid" id="nuevoAl">
-    <mat-toolbar>Alta de alumno</mat-toolbar>
+    <mat-toolbar>Editar alumno</mat-toolbar>
   <div class="example-container">
     <form [formGroup]="alumnoForm" (ngSubmit)="onSubmit()">
-
-
+        <div class="row">
+            <div class="col-2">
+              <mat-form-field>
+                <input matInput placeholder="Legajo" formControlName="legajo" readonly="true"> 
+              </mat-form-field>
+            </div>
+        </div>
       <div class="row">
         <div class="col-2">
           <mat-form-field>
@@ -18,7 +23,7 @@
         </div>
         <div class="col-2">
           <mat-form-field>
-            <select matNativeControl placeholder="tipo de documento" formControlName="tipodoc" name="tipodoc" required>
+            <select matNativeControl placeholder="tipo de documento" formControlName="tipodoc" name="tipodoc">
               <option value="DNI">DNI</option>
               <option value="libretacivica">Libreta Civica</option>
             </select>
@@ -28,7 +33,7 @@
       <div class="row">
         <div class="col-2">
           <mat-form-field>
-            <input matInput placeholder="documento" formControlName="documento" required>
+            <input matInput placeholder="documento" formControlName="documento" readonly="true">
           </mat-form-field>
         </div>
         <div class="col-2">
@@ -46,7 +51,7 @@
       </div>
       
       <br>
-      <button type="submit" [disabled]="!alumnoForm.valid" mat-raised-button color="primary">Aceptar</button>
+      <button type="submit" [disabled]="!alumnoForm.valid" mat-raised-button color="primary">editar</button>
     </form>
   </div>
 

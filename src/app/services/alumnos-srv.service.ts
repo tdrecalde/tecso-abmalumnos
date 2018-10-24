@@ -18,13 +18,13 @@ export class AlumnosSRVService {
 
   getListaAlumnos(): Alumno[] {
     return [
-      {identificador: 1, legajo:5556, nombre: 'María', apellido: 'Del Piero',tipodoc:"DNI",documento:"33333333",fechanac:"20/03/1991"}
-    , {identificador: 2, legajo:5557, nombre: 'Pedro', apellido: 'Mendieta', tipodoc:"DNI",documento:"33444444",fechanac:"21/03/1990"}
+      {identificador: 1, legajo:5556, direccion:"calle1", nombre: 'María', apellido: 'Del Piero',tipodoc:"DNI",documento:"33333333",fechanac: new Date(1990,1,1)}
+    , {identificador: 2, legajo:5557,  direccion:"calle1", nombre: 'Pedro', apellido: 'Mendieta', tipodoc:"DNI",documento:"33444444",fechanac: new Date(1990,1,1)}
   ];
   }
 
   getDatosAlumno(legajo:number): Alumno{
-    return {identificador: 1, legajo:legajo, nombre: 'María', apellido: 'Del Piero',tipodoc:"DNI",documento:"33333333",fechanac:"20/03/1991"}
+    return {identificador: 1, legajo:legajo, direccion:"calle1", nombre: 'María', apellido: 'Del Piero',tipodoc:"DNI",documento:"33333333",fechanac: new Date(1990,1,1)}
   }
 
   altaAlumno(alumno:Alumno): void{
@@ -32,11 +32,11 @@ export class AlumnosSRVService {
   }
 
   modAlumno(legajo:number): Alumno{
-    return {identificador: 1, legajo:legajo, nombre: 'María', apellido: 'Del Piero',tipodoc:"DNI",documento:"33333333",fechanac:"20/03/1991"}
+    return {identificador: 1, legajo:legajo, direccion:"calle1", nombre: 'María', apellido: 'Del Piero',tipodoc:"DNI",documento:"33333333",fechanac: new Date(1990,1,1)}
   }
 
   delAlumno(legajo:number): Alumno{
-    return {identificador: 1, legajo:legajo, nombre: 'María', apellido: 'Del Piero',tipodoc:"DNI",documento:"33333333",fechanac:"20/03/1991"}
+    return {identificador: 1, legajo:legajo, direccion:"calle1", nombre: 'María', apellido: 'Del Piero',tipodoc:"DNI",documento:"33333333",fechanac: new Date(1990,1,1)}
   }
 
   private handleError(error: any): Promise<any> {

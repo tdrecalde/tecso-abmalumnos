@@ -1,0 +1,11 @@
+#datosAlumnos{
+    min-height: 600px;
+}
+.etiqueta{
+    margin-top: 25px;
+    display: inline-block;
+    
+}
+.valorEtiqueta{
+    color:darkgrey;
+}

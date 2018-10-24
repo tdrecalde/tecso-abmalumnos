@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Alumno } from '../clases/alumno';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlumnosSRVService } from '../services/alumnos-srv.service';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-nuevo-alumno',
-  templateUrl: './nuevo-alumno.component.html',
-  styleUrls: ['./nuevo-alumno.component.css']
+  selector: 'app-editar-alumno',
+  templateUrl: './editar-alumno.component.html',
+  styleUrls: ['./editar-alumno.component.css']
 })
 
-export class NuevoAlumnoComponent implements OnInit {
+export class EditarAlumnoComponent implements OnInit {
 
 alumno:Alumno;
 
@@ -19,16 +19,16 @@ alumno:Alumno;
 
   alumnoForm = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
-    apellido: new FormControl('', [Validators.required]),
-    tipodoc: new FormControl('', [Validators.required]),
-    documento: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
+    apellido: new FormControl([Validators.required]),
+    tipodoc: new FormControl({disabled:true}, [Validators.required]),
+    documento: new FormControl({disabled:true}, [Validators.required]),
     fechanac: new FormControl('', [Validators.required]),
     direccion: new FormControl('', [Validators.required]),
-    legajo: new FormControl(''),
+    legajo: new FormControl({disabled:true}, [Validators.required])
   });
 
   updateProfile() {
-    // this.alumnoForm.patchValue(this.alumnossSrv.getDatosAlumno(1234));
+    this.alumnoForm.patchValue(this.alumnossSrv.getDatosAlumno(1234));
   }
 
   ngOnInit() {
@@ -46,7 +46,7 @@ alumno:Alumno;
 
     this.alumnossSrv.altaAlumno(this.alumno);
 
-    this.router.navigateByUrl('/listadoAlumnos');
+    this.router.navigateByUrl('/listadoAlumnos/:');
 
   }
 
