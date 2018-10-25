@@ -13,21 +13,26 @@ import { Router } from '@angular/router';
 
 export class EditarAlumnoComponent implements OnInit {
 
-alumno:Alumno;
+  alumno: Alumno;
 
   constructor(private alumnossSrv: AlumnosSRVService, private router: Router) { }
 
   alumnoForm = new FormGroup({
-    nombre: new FormControl('', [Validators.required]),
-    apellido: new FormControl([Validators.required]),
-    tipodoc: new FormControl({disabled:true}, [Validators.required]),
-    documento: new FormControl({disabled:true}, [Validators.required]),
-    fechanac: new FormControl('', [Validators.required]),
-    direccion: new FormControl('', [Validators.required]),
-    legajo: new FormControl({disabled:true}, [Validators.required])
+    legajo: new FormControl({ disabled: true }, [Validators.required]),
+    persona: new FormGroup({
+      nombre: new FormControl('', [Validators.required]),
+      apellido: new FormControl([Validators.required]),
+      tipodoc: new FormControl({ disabled: true }, [Validators.required]),
+      documento: new FormControl({ disabled: true }, [Validators.required]),
+      fechanac: new FormControl('', [Validators.required]),
+      direccion: new FormControl('', [Validators.required]),
+    })
   });
 
   updateProfile() {
+
+
+
     this.alumnoForm.patchValue(this.alumnossSrv.getDatosAlumno(1234));
   }
 
@@ -35,8 +40,8 @@ alumno:Alumno;
     this.updateProfile();
   }
 
- 
-  
+
+
 
   onSubmit() {
 
@@ -44,9 +49,13 @@ alumno:Alumno;
 
     this.alumno = this.alumnoForm.value;
 
-    this.alumnossSrv.altaAlumno(this.alumno);
+    console.log("SEEE", this.alumno);
 
-    this.router.navigateByUrl('/listadoAlumnos/:');
+    // this.alumnossSrv.altaAlumno(this.alumno);
+
+
+
+    // this.router.navigateByUrl('/listadoAlumnos/:');
 
   }
 

@@ -18,13 +18,15 @@ alumno:Alumno;
   constructor(private alumnossSrv: AlumnosSRVService, private router: Router) { }
 
   alumnoForm = new FormGroup({
-    nombre: new FormControl('', [Validators.required]),
-    apellido: new FormControl('', [Validators.required]),
-    tipodoc: new FormControl('', [Validators.required]),
-    documento: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
-    fechanac: new FormControl('', [Validators.required]),
-    direccion: new FormControl('', [Validators.required]),
-    legajo: new FormControl(''),
+    legajo: new FormControl('', []),
+    persona: new FormGroup({
+      nombre: new FormControl('', [Validators.required]),
+      apellido: new FormControl('', [Validators.required]),
+      tipodoc: new FormControl('',  [Validators.required]),
+      documento: new FormControl('',  [Validators.required, Validators.pattern('^[0-9]+$')]),
+      fechanac: new FormControl('', [Validators.required]),
+      direccion: new FormControl('', [Validators.required]),
+    })
   });
 
   updateProfile() {
@@ -32,7 +34,7 @@ alumno:Alumno;
   }
 
   ngOnInit() {
-    this.updateProfile();
+    // this.updateProfile();
   }
 
  

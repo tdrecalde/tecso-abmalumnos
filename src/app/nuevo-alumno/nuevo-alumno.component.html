@@ -1,50 +1,56 @@
-
 <div class="container-fluid" id="nuevoAl">
-    <mat-toolbar>Alta de alumno</mat-toolbar>
+  <mat-toolbar>Alta de alumno</mat-toolbar>
   <div class="example-container">
     <form [formGroup]="alumnoForm" (ngSubmit)="onSubmit()">
-
-
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-2">
           <mat-form-field>
-            <input matInput placeholder="Nombre" formControlName="nombre" required>
+            <input matInput placeholder="Legajo" formControlName="legajo">
           </mat-form-field>
         </div>
-        <div class="col-2">
-          <mat-form-field>
-            <input matInput placeholder="Apellido" formControlName="apellido" required>
-          </mat-form-field>
+      </div> -->
+      <div formGroupName="persona">
+        <div class="row">
+          <div class="col-2">
+            <mat-form-field>
+              <input matInput placeholder="Nombre" formControlName="nombre" required>
+            </mat-form-field>
+          </div>
+          <div class="col-2">
+            <mat-form-field>
+              <input matInput placeholder="Apellido" formControlName="apellido" required>
+            </mat-form-field>
+          </div>
+          <div class="col-2">
+            <mat-form-field>
+              <select matNativeControl placeholder="tipo de documento" formControlName="tipodoc" name="tipodoc"
+                required>
+                <option value="DNI">DNI</option>
+                <option value="libretacivica">Libreta Civica</option>
+              </select>
+            </mat-form-field>
+          </div>
         </div>
-        <div class="col-2">
-          <mat-form-field>
-            <select matNativeControl placeholder="tipo de documento" formControlName="tipodoc" name="tipodoc" required>
-              <option value="DNI">DNI</option>
-              <option value="libretacivica">Libreta Civica</option>
-            </select>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-2">
-          <mat-form-field>
-            <input matInput placeholder="documento" formControlName="documento" required>
-          </mat-form-field>
-        </div>
-        <div class="col-2">
-          <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="fechanac" formControlName="fechanac">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-        </div>
-        <div class="col-2">
+        <div class="row">
+          <div class="col-2">
+            <mat-form-field>
+              <input matInput placeholder="documento" formControlName="documento" required>
+            </mat-form-field>
+          </div>
+          <div class="col-2">
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="fechanac" formControlName="fechanac">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-2">
             <mat-form-field>
               <input matInput placeholder="Direccion" formControlName="direccion" required>
             </mat-form-field>
           </div>
+        </div>
       </div>
-      
       <br>
       <button type="submit" [disabled]="!alumnoForm.valid" mat-raised-button color="primary">Aceptar</button>
     </form>

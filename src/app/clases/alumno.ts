@@ -1,10 +1,7 @@
+import { Persona } from "./persona";
+
 export class Alumno {
-    identificador: number;
-    legajo:number;
-    tipodoc: string;
-    documento: string;
-    nombre: string;
-    apellido: string;
-    direccion: string;
-    fechanac: Date;
+    identificador?:number;
+    legajo?:number;
+    persona:Persona;
 }
