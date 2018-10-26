@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AlumnosSRVService } from '../services/alumnos-srv.service';
 import { Alumno } from '../clases/alumno';
 
@@ -10,18 +10,22 @@ import { Alumno } from '../clases/alumno';
 })
 export class DatosAlumnosComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute,private alumnossSrv: AlumnosSRVService) { }
-  legajo:number;
-  alumno:Alumno;
+  constructor(private activatedRoute: ActivatedRoute, private alumnossSrv: AlumnosSRVService) { }
+  legajo: number;
+  alumno: Alumno;
   ngOnInit() {
 
     this.activatedRoute.params.subscribe((params: Params) => {
       this.legajo = params['legajo'];
       console.log(this.legajo);
-      this.alumno = this.alumnossSrv.getDatosAlumno(this.legajo);
+
+      this.alumnossSrv.getDatosAlumno(this.legajo).subscribe(
+        alumno => this.alumno
+      );
+
     });
 
-    
+
 
   }
 }

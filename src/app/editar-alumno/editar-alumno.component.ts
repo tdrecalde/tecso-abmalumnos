@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Alumno } from '../clases/alumno';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlumnosSRVService } from '../services/alumnos-srv.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 
 @Component({
@@ -15,8 +15,9 @@ export class EditarAlumnoComponent implements OnInit {
 
   alumno: Alumno;
 
-  constructor(private alumnossSrv: AlumnosSRVService, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private alumnossSrv: AlumnosSRVService, private router: Router) { }
 
+  legajo: number;
   alumnoForm = new FormGroup({
     legajo: new FormControl({ disabled: true }, [Validators.required]),
     persona: new FormGroup({
@@ -29,33 +30,29 @@ export class EditarAlumnoComponent implements OnInit {
     })
   });
 
-  updateProfile() {
 
-
-
-    this.alumnoForm.patchValue(this.alumnossSrv.getDatosAlumno(1234));
-  }
 
   ngOnInit() {
-    this.updateProfile();
+
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.legajo = params['legajo'];
+      console.log(this.legajo);
+      this.alumnossSrv.getDatosAlumno(this.legajo).subscribe(
+        alumno => this.alumnoForm.patchValue(alumno)
+      )
+
+    });
+
+
   }
-
-
-
 
   onSubmit() {
 
-    console.log("Thanks for submitting! Data: ", this.alumnoForm.value);
-
     this.alumno = this.alumnoForm.value;
 
-    console.log("SEEE", this.alumno);
+    this.alumnossSrv.modAlumno(this.alumno);
 
-    // this.alumnossSrv.altaAlumno(this.alumno);
-
-
-
-    // this.router.navigateByUrl('/listadoAlumnos/:');
+    this.router.navigateByUrl('/listadoAlumnos/');
 
   }
 

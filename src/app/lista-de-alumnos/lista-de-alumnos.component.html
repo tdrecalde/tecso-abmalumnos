@@ -4,36 +4,36 @@
 
   <ng-container matColumnDef="legajo">
     <th mat-header-cell *matHeaderCellDef> Legajo </th>
-    <td mat-cell *matCellDef="let element"> 
-      <button [routerLink]="['/datosAlumno/' + element.legajo]" mat-raised-button color="primary">{{element.legajo}} </button>
+    <td mat-cell *matCellDef="let alumno"> 
+      <button [routerLink]="['/datosAlumno/' + alumno.legajo]" mat-raised-button color="primary">{{alumno.legajo}} </button>
     </td>
   </ng-container>
 
   <ng-container matColumnDef="documento">
     <th mat-header-cell *matHeaderCellDef> Documento </th>
-    <td mat-cell *matCellDef="let element"> {{element.persona.tipodoc}}: {{element.persona.documento}} </td>
+    <td mat-cell *matCellDef="let alumno"> {{alumno.persona.tipodoc}}: {{alumno.persona.documento}} </td>
   </ng-container>
 
   <ng-container matColumnDef="nombre">
     <th mat-header-cell *matHeaderCellDef> Nombre </th>
-    <td mat-cell *matCellDef="let element"> {{element.persona.nombre}} </td>
+    <td mat-cell *matCellDef="let alumno"> {{alumno.persona.nombre}} </td>
   </ng-container>
 
   <ng-container matColumnDef="apellido">
     <th mat-header-cell *matHeaderCellDef> Apellido </th>
-    <td mat-cell *matCellDef="let element"> {{element.persona.apellido}} </td>
+    <td mat-cell *matCellDef="let alumno"> {{alumno.persona.apellido}} </td>
   </ng-container>
 
   <ng-container matColumnDef="fechanac">
     <th mat-header-cell *matHeaderCellDef> Fecha de nacimiento </th>
-    <td mat-cell *matCellDef="let element"> {{element.persona.fechanac}} </td>
+    <td mat-cell *matCellDef="let alumno"> {{alumno.persona.fechanac}} </td>
   </ng-container>
 
   <ng-container matColumnDef="acciones">
     <th mat-header-cell *matHeaderCellDef> Acciones </th>
-    <td mat-cell *matCellDef="let element"> 
-      <button [routerLink]="['/editarAlumno/' + element.legajo]" mat-raised-button color="primary">Editar</button>
-      <button [routerLink]="['/datosAlumno/' + element.legajo]" mat-raised-button color="warn">Borrar</button>
+    <td mat-cell *matCellDef="let alumno"> 
+      <button [routerLink]="['/editarAlumno/' + alumno.legajo]" mat-raised-button color="primary">Editar</button>
+      <button [routerLink]="['/datosAlumno/' + alumno.legajo]" mat-raised-button color="warn">Borrar</button>
     </td>
   </ng-container>
   

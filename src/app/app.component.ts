@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +7,4 @@ import { RouterModule, Routes } from '@angular/router';
 })
 export class AppComponent {
   titulo = 'ABM de alumnos';
-
-
-  
 }
