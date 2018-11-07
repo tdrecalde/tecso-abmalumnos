@@ -1,49 +1,53 @@
 import { Injectable } from '@angular/core';
 import { Alumno } from '../clases/alumno';
+import { Constantes } from '../clases/constantes';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/internal/Observable';
+import { of } from 'rxjs/internal/observable/of';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AlumnosSRVService {
 
+  constructor(private http: HttpClient, ) { }
 
-  // getSitiosXML(): Promise<Sitio[]> {
-  //   this.headers = new Headers({'Content-Type': 'application/xml'});
-  //   this.urlXMLSitios = './assets/sitios.xml';
-  //   return this.http.get(this.urlXMLSitios, {headers: this.headers})
-  //             .toPromise()
-  //             .then(response => (this.parseXML2Json(response.text())))
-  //             .catch(this.handleError);
+  getListaAlumnos(): Observable<Alumno[]> {
+    return this.http.get<Alumno[]>(Constantes.G_TODOS_ALUMNOS)
+  }
+
+
+  // getDatosAlumno(legajo: number): Alumno {
+  //   // return { identificador: 1, legajo: legajo, persona: { identificador: 1, direccion: "calle1", nombre: 'Mar�a', apellido: 'Del Piero', tipodoc: "DNI", documento: "33333333", fechanac: new Date(1990, 1, 1) } }
   // }
 
-  getListaAlumnos(): Alumno[] {
-    return [
-      {identificador: 1, legajo:1, persona:{identificador:1,direccion:"calle1", nombre: 'María', apellido: 'Del Piero',tipodoc:"DNI",documento:"33333333",fechanac: new Date(1990,1,1)}}
-    , {identificador: 2, legajo:2, persona:{identificador:21,direccion:"calle1", nombre: 'Pedro', apellido: 'MArcico',tipodoc:"DNI",documento:"33333333",fechanac: new Date(1990,1,1)}}
-  ];
+  getDatosAlumno(legajo: number): Observable<Alumno> {
+    return this.http.get<Alumno>(Constantes.GDP_ALUMNO + legajo)
   }
 
-  getDatosAlumno(legajo:number): Alumno{
-    return {identificador: 1, legajo:legajo, persona:{identificador:1,direccion:"calle1", nombre: 'María', apellido: 'Del Piero',tipodoc:"DNI",documento:"33333333",fechanac: new Date(1990,1,1)}}
+  altaAlumno(alumno: Alumno): void {
+    this.http.put<Alumno>(Constantes.GDP_ALUMNO, alumno)
+    // console.log(alumno);
   }
 
-  altaAlumno(alumno:Alumno): void{
-    console.log(alumno);
+  modAlumno(alumno: Alumno): void {
+
+     this.http.post<Alumno>(Constantes.GDP_ALUMNO, alumno)
+    //return { identificador: 1, legajo: legajo, persona: { identificador: 1, direccion: "calle1", nombre: 'Mar�a', apellido: 'Del Piero', tipodoc: "DNI", documento: "33333333", fechanac: new Date(1990, 1, 1) } }
   }
 
-  modAlumno(legajo:number): Alumno{
-    return {identificador: 1, legajo:legajo, persona:{identificador:1,direccion:"calle1", nombre: 'María', apellido: 'Del Piero',tipodoc:"DNI",documento:"33333333",fechanac: new Date(1990,1,1)}}
+  delAlumno(legajo: number): Alumno {
+    return { identificador: 1, legajo: legajo, persona: { identificador: 1, direccion: "calle1", nombre: 'Mar�a', apellido: 'Del Piero', tipodoc: "DNI", documento: "33333333", fechanac: new Date(1990, 1, 1) } }
   }
 
-  delAlumno(legajo:number): Alumno{
-    return {identificador: 1, legajo:legajo, persona:{identificador:1,direccion:"calle1", nombre: 'María', apellido: 'Del Piero',tipodoc:"DNI",documento:"33333333",fechanac: new Date(1990,1,1)}}
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error); // log to console instead
+      console.error(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
   }
 
-  private handleError(error: any): Promise<any> {
-    console.error('Se produjo un error: ', error);
-    return null;
-    // Promise.reject(error.message || error);
-  }
 
-  constructor() { }
 }

@@ -1,28 +1,30 @@
 <div class="container" id="datosAlumnos">
-  <div class="row">
-    <div class="col-4">
+  <div *ngIf="alumno">
+    <div class="row">
+      <div class="col-4">
         <span class="etiqueta">Legajo: </span><span class="valorEtiqueta">{{alumno.legajo}}</span>
-    </div>
-    <div class="col-4">
+      </div>
+      <div class="col-4">
         <span class="etiqueta">Documento: </span><span class="valorEtiqueta">{{alumno.persona.tipodoc}}:{{alumno.persona.documento}}</span>
+      </div>
+      <div class="col-4">
+      </div>
     </div>
-    <div class="col-4">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-4">
-      <span class="etiqueta">Nombre: </span><span class="valorEtiqueta">{{alumno.persona.nombre}}</span>
-    </div>
-    <div class="col-4">
+    <div class="row">
+      <div class="col-4">
+        <span class="etiqueta">Nombre: </span><span class="valorEtiqueta">{{alumno.persona.nombre}}</span>
+      </div>
+      <div class="col-4">
         <span class="etiqueta">Apellido: </span><span class="valorEtiqueta">{{alumno.persona.apellido}}</span>
+      </div>
+      <div class="col-4">
+        <span class="etiqueta">Direcci�n: </span><span class="valorEtiqueta"> {{alumno.persona.direccion}}</span>
+      </div>
     </div>
-    <div class="col-4">
-        <span class="etiqueta">Dirección: </span><span class="valorEtiqueta"> {{alumno.persona.direccion}}</span>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-4">
-        <span class="etiqueta">Fecha de nacimiento: </span><span class="valorEtiqueta">{{alumno.persona.fechanac| date}}</span>
+    <div class="row">
+      <div class="col-4">
+        <span class="etiqueta">Fecha de nacimiento: </span><span class="valorEtiqueta">{{alumno.persona.fechanac | date }}</span>
+      </div>
     </div>
   </div>
 </div>

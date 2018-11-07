@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlumnosSRVService } from '../services/alumnos-srv.service';
 import { Alumno } from '../clases/alumno';
-
+import {DataSource} from '@angular/cdk/collections';
+import { Observable } from 'rxjs/internal/Observable';
 
 
 @Component({
@@ -11,20 +12,29 @@ import { Alumno } from '../clases/alumno';
 })
 export class ListaDeAlumnosComponent implements OnInit {
 
-
   constructor(private alumnossSrv: AlumnosSRVService) { }
 
-  alumnos:Array<Alumno>;
-  dataSource:Array<Alumno>;
+  // dataSource:Array<Alumno>;
+  dataSource = new AlumnoDataSource(this.alumnossSrv);
 
   displayedColumns: string[] = ['legajo', 'documento', 'nombre', 'apellido', 'fechanac', 'acciones'];
   
 
   ngOnInit() {
 
-    this.alumnos = this.alumnossSrv.getListaAlumnos();
-    this.dataSource = this.alumnos;
-    
+    // this.alumnossSrv.getListaAlumnos().subscribe(
+    //   alumnos => this.dataSource
+    // )
   }
 
+}
+
+export class AlumnoDataSource extends DataSource<any> {
+  constructor(private alumnossSrv: AlumnosSRVService) {
+    super();
+  }
+  connect(): Observable<Alumno[]> {
+    return this.alumnossSrv.getListaAlumnos();
+  }
+  disconnect() {}
 }
